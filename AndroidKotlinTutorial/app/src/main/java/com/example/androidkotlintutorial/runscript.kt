@@ -1,7 +1,11 @@
 package com.example.androidkotlintutorial
+
+import androidx.annotation.RequiresApi
+@RequiresApi(24)
 // run with right-click menu   or   ctrl+shift+F10
 
 fun main(args: Array<String>) {
+
     val name = "JohnnyB" //val == const
     var isAwesome = true
 
@@ -78,9 +82,64 @@ fun main(args: Array<String>) {
         else -> println("unkown computer glitch, check for divided by 0 and scan for disk corruption")
     }
 
-val imperials = listOf("Admiral Piet","Darth Vader","Emperor Palpatine","Moff Tarkin","Admiral Thrawn","Colonel Starch")
+    //immutable list
+    val imperials = listOf("Admiral Piet","Darth Vader","Emperor Palpatine","Moff Tarkin","Admiral Thrawn","Colonel Starch")
+    println(imperials.sorted())
+    println(imperials[2])
+    println(imperials.sorted()[2])
+    println(imperials.sorted().last())
+    println(imperials.sorted().first())
+    println(imperials.contains("Luke"))
 
+    //mutable list
+    val rebels = arrayListOf<String>("Han Solo","Leia","luke","Rey","Chewbacca","Bill Nye")
+    println(rebels.size)
+    rebels.add("Lando")                                 //add at start
+    println(rebels.size)
+    println(rebels)
+    println(rebels.indexOf("luke"))                     //get index
+    rebels.add(rebels.indexOf("luke"),"C-3PO")  //add at and push back luke
+    println(rebels)
+    rebels.add(rebels.size,"Greedo")            // append
+    println(rebels)
+    rebels.remove("Greedo")
+    println(rebels)
+    rebels.removeLast()
+                                                        //NB adds at the end
+    rebels.addAll(listOf("Gary Lewis","Tom Kotlin","J.R. Tolkien","Albus Percival Wulfric Brian Dumbledore"))
+    println(rebels)
 
+    // immutable map
+    val rebelCarMap = mapOf(
+        //key           value
+        "Han Solo" to "Millennium Falcon",
+        "Luke Skywalker" to "Landspeeder",
+        "Leia Organa" to "Star Destroyer",
+        "Lando Calrissian" to "Millennium Falcon",          //key must be different but value can be the same
+        )
+    println(rebelCarMap["Han Solo"])
+    println(rebelCarMap.get("Han Solo"))
+
+    println(rebelCarMap.getOrDefault("Leia", "This person doesn't have a ship"))
+    println(rebelCarMap["Lando Calrissian"])
+ println("\n")
+    val varShipMap = hashMapOf<String, String>("han" to "leia","luke" to "leia", "leia" to "han", "jabba" to "leia")
+    varShipMap["luke"] = "lukes right hand"
+    varShipMap.remove("jabba")
+    varShipMap.put("jabba", "leia")
+    for(lameDuck in rebels){
+        println(lameDuck)
+
+    }
+    println("\n")
+    for((key,value) in varShipMap){
+        if(varShipMap.containsKey(value)){
+            varShipMap[value]=key
+        }
+        println("${key} and ${varShipMap[key]} are sitting in a tree K I S S I N G!")
+    }
+
+    println("\n")
 
 }
 
