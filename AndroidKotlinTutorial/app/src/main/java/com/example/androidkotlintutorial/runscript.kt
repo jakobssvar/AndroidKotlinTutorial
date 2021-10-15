@@ -155,8 +155,18 @@ fun main(args: Array<String>) {
     val k = if(myFunc() != null){ "well, hello there"} else { "404 - these are not the droids you are looking for"}
     println(l)
     println(k)
-    
+    val kk = myFunc() ?: "default value"            //elvis operator - i just thought this was really cool
+    println(kk)
+    println(myFunc()?.length)                       //safe call operator
+
     println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+
+    println(k!!.length)                             //promise operator, can cause crashes, be sure that something exists before you say it does
+
+    val testClass = TestClass("dishwasher", Thread.currentThread().getStackTrace()[1].getLineNumber())
+    testClass.report()
+    testClass.work()
+    testClass.report()
 
 }
 
