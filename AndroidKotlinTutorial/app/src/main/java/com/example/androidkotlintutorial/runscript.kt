@@ -177,6 +177,23 @@ fun main(args: Array<String>) {
     examClass.report()
     examClass.work()
     examClass.report()
+    testClass.status()
+    examClass.status()
+
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+
+    //function name     parameter           return value
+    val printMessage = {message:String -> (println(message))}
+    printMessage("some text")
+    val complexMethod = {message:String,num:Int->(println("This $message is in the body of $num function${if(num>1){"s"}else{""}}."))}
+    complexMethod("bird", 5)
+    complexMethod("crab", 1)
+    val sum : (Int, Int) -> Int = {x,y -> x + y}
+    println(sum(3,4))
+    val complexMethod2 = {message:String,num:Int,num2:Int->(println("This $message is in the body of ${sum(num,num2)} function${if(sum(num,num2)>1){"s"}else{""}}."))}
+    complexMethod2("bird", 4,-3)
+    complexMethod2("crab",3,4 )
+
 }
 
 

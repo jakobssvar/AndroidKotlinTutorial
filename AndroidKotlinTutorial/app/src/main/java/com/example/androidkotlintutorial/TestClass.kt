@@ -16,7 +16,7 @@ open class TestClass constructor(type: String, poo: Int){
     fun fallBehind() {
         poo--
     }
-    fun status(){
+    open fun status(){
         println("This ${type}er is active")
         helper.help()
     }
@@ -30,6 +30,11 @@ class ExamClass(exam:String, type:String, poo:Int) : TestClass( type, poo){
     override fun report(){
         println("In Russia the $type tests YOU and $poo units of work is not enough")
         println("and as always ${helper.name} helped")
+    }
+
+    override fun status() {
+        super.status()              //calls parentmethod
+        println("and the exam is $exam.")
     }
 }
 
