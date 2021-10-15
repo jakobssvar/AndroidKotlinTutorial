@@ -5,7 +5,6 @@ import androidx.annotation.RequiresApi
 // run with right-click menu   or   ctrl+shift+F10
 
 fun main(args: Array<String>) {
-
     val name = "JohnnyB" //val == const
     var isAwesome = true
 
@@ -23,7 +22,7 @@ fun main(args: Array<String>) {
     println("May the force\b be with you")
     println("Is " + name + " awesome?/n the answer is /t" + isAwesome + "/r\r")  //this doesn't work
     fixedType = "aballaballaball"
-    println("\n")
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
     val rawCrawl = """ |A long long time ago,
         |in a kingdom 
         |not so far 
@@ -35,12 +34,12 @@ fun main(args: Array<String>) {
     println(fixedType.contains("ball", ignoreCase = false))
     fixedType.uppercase()
     fixedType.lowercase()
-    println("\n")
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
     println(doubleNum.toString() + doubleNum)  //treated as string not number
     println(doubleNum.toString() + doubleNum + 4)  //treated as string not number
     println(doubleNum.toString() + (doubleNum + 4))  //the last doubleNum and 4 are added together
 
-    println("\n")
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     var subString: String = ""
     var shortNum = 0
@@ -53,7 +52,7 @@ fun main(args: Array<String>) {
     }
     println(subString)
 
-    println("\n")
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     val luke = "Luke Skywalker"
     val lightsaberColor = "Blue"
@@ -62,18 +61,18 @@ fun main(args: Array<String>) {
     println("$luke has a $lightsaberColor lightsaber and he is not a $race.")
     println("lukes fullname has ${luke.length} characters including spaces")
 
-    println("\n")
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     println(myFunc())
 
-    println("\n")
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     if(shortNum >= 5){println("it is")}
     else if(doubleNum >= 5){println("it isn't but doubleNum is")}
     else {println("seems like nobody is")}
     //also: == != >= <= < > && ||
     println("\n")
-    val x  = 1
+    var x  = 1
     when(x) {
         1 -> println("It's one yo!")
         2 -> println("YO! It's 2 now")
@@ -122,7 +121,7 @@ fun main(args: Array<String>) {
 
     println(rebelCarMap.getOrDefault("Leia", "This person doesn't have a ship"))
     println(rebelCarMap["Lando Calrissian"])
- println("\n")
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
     val varShipMap = hashMapOf<String, String>("han" to "leia","luke" to "leia", "leia" to "han", "jabba" to "leia")
     varShipMap["luke"] = "lukes right hand"
     varShipMap.remove("jabba")
@@ -131,15 +130,33 @@ fun main(args: Array<String>) {
         println(lameDuck)
 
     }
-    println("\n")
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
     for((key,value) in varShipMap){
-        if(varShipMap.containsKey(value)){
+        if(varShipMap.containsKey(value) && varShipMap[value] == key){
             varShipMap[value]=key
+            println("${key} and ${varShipMap[key]} are sitting in a tree K I S S I N G!")
+        } else {
+            println("${key} will die alone pining for ${varShipMap[key]}, who is forever out of reach")
         }
-        println("${key} and ${varShipMap[key]} are sitting in a tree K I S S I N G!")
+
     }
 
-    println("\n")
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    x = 10
+    while(x> 0){
+
+        println(x)
+        x--
+    }
+
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+
+    val l = if(myFunc(rebels[0]) != null){ "well, hello there"} else { "404 - these are not the droids you are looking for"}
+    val k = if(myFunc() != null){ "well, hello there"} else { "404 - these are not the droids you are looking for"}
+    println(l)
+    println(k)
+    
+    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
 }
 
@@ -148,7 +165,8 @@ fun main(args: Array<String>) {
 fun myFunc(str:String? = null):String?{
     var retVal = str
     if (retVal == null) {
-        retVal="empty"
+        retVal=null
     }
     return retVal
 }
+
