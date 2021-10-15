@@ -1,21 +1,27 @@
 package com.example.androidkotlintutorial
 
 import androidx.annotation.RequiresApi
+import androidx.core.util.toHalf
+import kotlin.math.sign
+import kotlin.math.ulp
+import kotlin.reflect.typeOf
+
 @RequiresApi(24)
 // run with right-click menu   or   ctrl+shift+F10
 
 fun main(args: Array<String>) {
     val name = "JohnnyB" //val == const
-    var isAwesome = true
+    val isAwesome = true
 
 
-    var doubleNum = 124.23  //64bit
+    val doubleNum = 124.23  //64bit
     var floatNum = 123.65f  //32bit
     var longNum = 62173613183281L  //64bit
+    println((longNum/floatNum))
 
     var toString = doubleNum.toString()
-    var fixedType: String
-    var comparableString = "aballaballaball"
+    val fixedType: String
+    val comparableString = "aballaballaball"
 
     println("Is " + name + " awesome?\n the \"answer\" is \t" + isAwesome)
     println("Is " + name + " awesome?\n the answer is \t" + isAwesome)
@@ -167,7 +173,10 @@ fun main(args: Array<String>) {
     testClass.report()
     testClass.work()
     testClass.report()
-
+    val examClass = ExamClass("2+2=x","dishwasher", Thread.currentThread().getStackTrace()[1].getLineNumber())
+    examClass.report()
+    examClass.work()
+    examClass.report()
 }
 
 
