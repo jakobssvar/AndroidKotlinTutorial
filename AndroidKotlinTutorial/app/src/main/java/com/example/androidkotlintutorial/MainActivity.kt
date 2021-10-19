@@ -12,9 +12,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         buttonGoFish.setOnClickListener {
-            val rnds:Int = (0..6).random()
+
+            val rnds:Int = (0..(choiceTexts.size-1)).random()
+            textView.text =  choiceTexts[rnds]
+
+            /* didn't work, ask majid about nullables
+            val rnds:Int = (0..6).random()                  // I intentionally set this to go too high
+            textView.text =  choiceTexts[rnds] ?: "Oh shit it's på norsk"
+            */
+
             //R.string.text_view_text //resources.string.*name*       xml: @string/*name*
-            textView.text = choiceTexts[rnds]
+
 
         }
     }
