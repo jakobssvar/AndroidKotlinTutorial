@@ -248,7 +248,7 @@ fun main(args: Array<String>) {
             println("Truck download failed.")
         }
     }
-    
+
 }
 
 
