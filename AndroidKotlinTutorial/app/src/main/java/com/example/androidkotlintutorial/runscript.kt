@@ -28,7 +28,7 @@ fun main(args: Array<String>) {
     println("May the force\b be with you")
     println("Is " + name + " awesome?/n the answer is /t" + isAwesome + "/r\r")  //this doesn't work
     fixedType = "aballaballaball"
-    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
     val rawCrawl = """ |A long long time ago,
         |in a kingdom 
         |not so far 
@@ -45,7 +45,7 @@ fun main(args: Array<String>) {
     println(doubleNum.toString() + doubleNum + 4)  //treated as string not number
     println(doubleNum.toString() + (doubleNum + 4))  //the last doubleNum and 4 are added together
 
-    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     var subString: String = ""
     var shortNum = 0
@@ -58,7 +58,7 @@ fun main(args: Array<String>) {
     }
     println(subString)
 
-    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     val luke = "Luke Skywalker"
     val lightsaberColor = "Blue"
@@ -67,11 +67,11 @@ fun main(args: Array<String>) {
     println("$luke has a $lightsaberColor lightsaber and he is not a $race.")
     println("lukes fullname has ${luke.length} characters including spaces")
 
-    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     println(myFunc())
 
-    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     if(shortNum >= 5){println("it is")}
     else if(doubleNum >= 5){println("it isn't but doubleNum is")}
@@ -147,7 +147,7 @@ fun main(args: Array<String>) {
 
     }
 
-    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
     x = 10
     while(x> 0){
 
@@ -155,7 +155,7 @@ fun main(args: Array<String>) {
         x--
     }
 
-    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     val l = if(myFunc(rebels[0]) != null){ "well, hello there"} else { "404 - these are not the droids you are looking for"}
     val k = if(myFunc() != null){ "well, hello there"} else { "404 - these are not the droids you are looking for"}
@@ -165,7 +165,7 @@ fun main(args: Array<String>) {
     println(kk)
     println(myFunc()?.length)                       //safe call operator
 
-    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     println(k!!.length)                             //promise operator, can cause crashes, be sure that something exists before you say it does
 
@@ -180,7 +180,7 @@ fun main(args: Array<String>) {
     testClass.status()
     examClass.status()
 
-    println("\n\nwe're at line${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
 
     //function name     parameter           return value
     val printMessage = {message:String -> (println(message))}
@@ -194,6 +194,61 @@ fun main(args: Array<String>) {
     complexMethod2("bird", 4,-3)
     complexMethod2("crab",3,4 )
 
+    fun simpleMethod(text:String, completion : (Int) -> Unit){
+        val a = 4
+        completion(a)
+    }
+    simpleMethod(rebels.first(),{ pos -> println( pos + 5);})
+
+    simpleMethod(rebels.first()){ pos ->
+        (println( pos + 5))     //prints 9
+    }
+
+    simpleMethod(rebels.first()){
+        (println(it + 6))       //prints 10
+    }
+
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+
+    fun complexMethod3(text:String, func1: (Int) -> Int, func2:(Int) ->String){
+        val functioningText:String = "I am"
+        println(functioningText + func2( func1(5)) + text)
+    }
+    complexMethod3("years old", { pos ->  (pos+5)} , {age->" " + age+ " "} )    // prints i am 10 years old
+    complexMethod3("years old", { pos ->  (pos+5)} ) {age->" " + age+ " "}     // only works with the second parameter
+
+    println("\n\nwe're at line ${Thread.currentThread().getStackTrace()[1].getLineNumber()}\n")
+
+    //    function M        p1           p2                  p3(pp1,pp2)
+    fun downloadTruckData(url:String ,fail:Boolean, completion:(String?,Boolean) ->Unit){
+        //function M.body
+        if (fail){
+            //p3 function call
+            completion(null,false)
+        } else {
+            //p3 function call
+            completion("This is a nice truck.", true)
+        }
+    }
+    //function call             p1                  p2      p3(pp1,pp2)
+    downloadTruckData("www.trucksgiven.com",true){truck,success ->
+        //parameter function body  (p3.body)
+        if(success) {
+            println(truck)
+        }else {
+            println("Truck download failed.")
+        }
+    }
+    //function call             p1                  p2      p3(pp1,pp2)
+    downloadTruckData("www.trucksgiven.com",false){truck,success ->
+        //parameter function body  (p3.body)
+        if(success) {
+            println(truck)
+        }else {
+            println("Truck download failed.")
+        }
+    }
+    
 }
 
 
