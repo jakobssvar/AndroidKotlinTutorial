@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">AndroidKotlinTutorial</string>
     <string name="text_view_text">What would you like to do?</string>
-    <string name="button_text">Go fish!</string>
+    <string name="button_text_go">Go fish!</string>
+    <string name="button_text_add">Add New</string>
+    <string name="input_text_hint">Type something new</string>
 </resources>
