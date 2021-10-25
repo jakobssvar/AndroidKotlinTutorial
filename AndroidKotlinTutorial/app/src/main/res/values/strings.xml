@@ -5,10 +5,18 @@
     <string name="button_text_add">Add New</string>
     <string name="input_text_hint">Type something new</string>
     <string name="text_button_go_other">Go to other</string>
+    <string name="text_button_go_frag">Go to fragments</string>
 
     <string name="text_view_text2">Who should you be today</string>
     <string name="button_text_go2">Eat a bagel!</string>
     <string name="button_text_add2">Add Adversary</string>
     <string name="input_text_hint2">Type something dark</string>
     <string name="text_button_go_main">Go to main</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="text_fragment_main">This fragment leads to Main</string>
+    <string name="text_fragment_other">This Fragment leads to Other</string>
+    <string name="button_fragment_go_main">Go Main</string>
+    <string name="button_fragment_go_other">Go Other</string>
+    <string name="button_fragment_main">MainFrag</string>
+    <string name="button_fragment_other">OtherFrag</string>
 </resources>

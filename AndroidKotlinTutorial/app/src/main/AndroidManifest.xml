@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidKotlinTutorial">
         <activity
+            android:name=".FragmentedActivity"
+            android:exported="false" />
+        <activity
             android:name=".OtherActivity"
             android:exported="false">
             <intent-filter>

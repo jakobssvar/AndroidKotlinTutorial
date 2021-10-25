@@ -61,12 +61,23 @@
 
     <Button
         android:id="@+id/buttonGoOther"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="233dp"
+        android:layout_height="46dp"
         android:text="@string/text_button_go_other"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonAdd" />
+
+    <Button
+        android:id="@+id/buttonGoFragment"
+        android:layout_width="232dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="3dp"
+        android:text="@string/text_button_go_frag"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGoOther" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
