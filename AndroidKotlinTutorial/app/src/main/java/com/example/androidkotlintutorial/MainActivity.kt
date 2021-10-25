@@ -36,10 +36,12 @@ class MainActivity : AppCompatActivity() {
         buttonGoOther.setOnClickListener{
             val intent = Intent(this@MainActivity, OtherActivity::class.java)
             startActivity(intent)
+            finish()
         }
         buttonGoFragment.setOnClickListener{
             val intent = Intent(this@MainActivity, FragmentedActivity::class.java)
             startActivity(intent)
+            finish()
         }
         /*if(choiceTexts[6]!=null) {// didn't work, ask majid about nullables
                 val rnds: Int =

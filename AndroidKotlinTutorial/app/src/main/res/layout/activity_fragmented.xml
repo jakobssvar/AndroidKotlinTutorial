@@ -7,7 +7,7 @@
     tools:context=".FragmentedActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonFrag1"
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:layout_marginStart="4dp"
@@ -16,21 +16,21 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonFrag2"
         android:layout_width="200dp"
         android:layout_height="80dp"
         android:text="@string/button_fragment_other"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/buttonFrag1" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="com.example.androidkotlintutorial.FragmentMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/buttonFrag2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

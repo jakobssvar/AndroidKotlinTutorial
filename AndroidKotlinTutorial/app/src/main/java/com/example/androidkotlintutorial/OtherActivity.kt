@@ -36,6 +36,7 @@ class OtherActivity : AppCompatActivity() {
             buttonGoMain.setOnClickListener{
                 val intent = Intent(this@OtherActivity, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             /*if(choiceTexts[6]!=null) {// didn't work, ask majid about nullables
                     val rnds: Int =
