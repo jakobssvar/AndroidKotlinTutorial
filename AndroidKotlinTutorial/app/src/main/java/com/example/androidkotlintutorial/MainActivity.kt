@@ -36,8 +36,12 @@ class MainActivity : AppCompatActivity() {
         }
         setContentView(R.layout.activity_main)
                                                                         //so let's try this instead
-        viewModel.currentText.observe(this, Observer{textView.text = it.toString()})
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+        if( viewModel.choiceTexts.value==null || viewModel.choiceTexts.value?.count()==0){
+            viewModel.choiceTexts.value = choiceTexts
+        }
+        viewModel.currentText.observe(this, Observer{textView.text = it.toString()})
+
 
         Toast.makeText(this@MainActivity,"yo",Toast.LENGTH_LONG)
         buttonGoFish.setOnClickListener {
@@ -47,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             var str: String = inputField.text.toString() ?: "";
 
             if(str != R.string.input_text_hint.toString() && str!= "") {
-                viewModel.choiceTexts.add(str)
+                viewModel.choiceTexts.value?.add(str)
 
             }
 
