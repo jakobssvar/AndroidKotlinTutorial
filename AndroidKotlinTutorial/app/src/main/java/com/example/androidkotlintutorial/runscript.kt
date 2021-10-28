@@ -236,14 +236,14 @@ fun main(args: Array<String>) {
         if(success) {
             println(truck)
         }else {
-            println("Truck download failed.")
+            println("Truck download failed.")   // this one fails
         }
     }
     //function call             p1                  p2      p3(pp1,pp2)
     downloadTruckData("www.trucksgiven.com",false){truck,success ->
         //parameter function body  (p3.body)
         if(success) {
-            println(truck)
+            println(truck)              //this one succeeds
         }else {
             println("Truck download failed.")
         }
