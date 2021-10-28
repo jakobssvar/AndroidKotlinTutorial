@@ -45,3 +45,21 @@ val name = type + "-bot"
 
     }
 }
+//unextendable structlike class   cannot be open or abstract
+data class MyData(val id:String,val name:String, var data:String)
+
+fun main()
+    {
+            val myDataset = MyData("500", "dataset A", "3,4,5,8,10")
+        println(myDataset)
+        myDataset.data +=",11"
+        println(myDataset)
+        println(myDataset.component1())
+        println(myDataset.component3())
+        println(myDataset.component2())
+    }
+
+
+//companion object
+
+//jetpack
