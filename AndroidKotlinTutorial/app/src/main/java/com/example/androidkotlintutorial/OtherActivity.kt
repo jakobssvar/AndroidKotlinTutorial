@@ -8,6 +8,18 @@ import kotlinx.android.synthetic.main.activity_other.*
 import kotlin.random.Random
 
 class OtherActivity : AppCompatActivity() {
+    companion object CompanionCube{
+        val height = StandardCube.height
+        val width = StandardCube.width
+        fun doNothing():String{
+            return "the companion cube does nothing, but you can love it"
+        }
+
+    }
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_other)
@@ -28,7 +40,16 @@ class OtherActivity : AppCompatActivity() {
                 var str: String = inputField2.text.toString() ?: "";
 
                 if(str != R.string.input_text_hint2.toString() && str!= "") {
-                    choiceTexts.add(str)
+                    if(str.contains("cube",true)){
+                        if(str.contains("std",true)){
+                            textView2.text = StandardCube.doNothing()
+                        }
+                        else {
+                            textView2.text = CompanionCube.doNothing()
+                        }
+                    }else {
+                        choiceTexts.add(str)
+                    }
                     Toast.makeText(this@OtherActivity,str+" was added as an alternative", Toast.LENGTH_LONG)
                 }
 
